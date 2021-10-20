@@ -22,7 +22,7 @@ const commonWord = "1234567890-=！@#￥%……&*()~:\"{}[]|\\?/<>,.;'+abcdefghi
 
 module.exports = class MelonMinFontPlugin {
   constructor(options) {
-    if (options.isMerge) {
+    if (options && options.isMerge) {
       this.extraWord = options.extraWord + commonWord;
     } else {
       this.extraWord = options.extraWord || commonWord;

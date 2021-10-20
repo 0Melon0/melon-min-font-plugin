@@ -26,7 +26,7 @@ module.exports = class MelonMinFontPlugin {
       if (options.isMerge) {
         this.extraWord = options.extraWord + commonWord;
       } else {
-        this.extraWord = commonWord;
+        this.extraWord = options.extraWord;
       }
     } else {
       this.extraWord = commonWord;

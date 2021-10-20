@@ -20,7 +20,9 @@ const melonMinFontPlugin = require("melon-min-font-plugin");
     new melonMinFontPlugin({
       extraWord: "自定义文字",
       // true 可以将自定义文字和常用字体合并
-      isMerge: false
+      isMerge: false,
+      // 不压缩文件
+      exclude:[ 'iconfont.ttf' ]
     })
   ],
 ```

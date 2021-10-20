@@ -22,12 +22,14 @@ const commonWord = "1234567890-=！@#￥%……&*()~:\"{}[]|\\?/<>,.;'+abcdefghi
 
 module.exports = class MelonMinFontPlugin {
   constructor(options) {
+    this.exclude = [];
     if (options) {
       if (options.isMerge) {
         this.extraWord = options.extraWord + commonWord;
       } else {
         this.extraWord = options.extraWord;
       }
+      this.exclude = Array.isArray(options.exclude) ? options.exclude : [];
     } else {
       this.extraWord = commonWord;
     }
@@ -42,20 +44,22 @@ module.exports = class MelonMinFontPlugin {
         console.log("字体压缩中...");
         Object.entries(assets).forEach(([pathname, source]) => {
           if (pathname.endsWith(".ttf")) {
-            new Fontmin()
-              .src(source.source())
-              .use(Fontmin.glyph({
-                text: this.extraWord,
-                hinting: false
-              }))
-              .run((err, files) => {
-                if (err) {
-                  console.error("字体压缩错误");
-                  console.log(err);
-                } else {
-                  assets[pathname] = new RawSource(files[0].contents);
-                }
-              })
+            if (!this.exclude.includes(pathname.split("/").pop())) {
+              new Fontmin()
+                .src(source.source())
+                .use(Fontmin.glyph({
+                  text: this.extraWord,
+                  hinting: false
+                }))
+                .run((err, files) => {
+                  if (err) {
+                    console.error("字体压缩错误");
+                    console.log(err);
+                  } else {
+                    assets[pathname] = new RawSource(files[0].contents);
+                  }
+                })
+            }
           }
         });
       });

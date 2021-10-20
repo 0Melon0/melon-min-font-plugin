@@ -1,0 +1,28 @@
+{
+  "name": "melon-min-font-plugin",
+  "version": "1.0.0",
+  "description": "compress font base fontmin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "webpack5",
+    "fontmin",
+    "ttf"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0Melon0/melon-min-font-plugin.git"
+  },
+  "author": "melon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0Melon0/melon-min-font-plugin/issues"
+  },
+  "dependencies": {
+    "fontmin": "^0.9.9",
+    "webpack-sources": "^3.2.1"
+  }
+}
